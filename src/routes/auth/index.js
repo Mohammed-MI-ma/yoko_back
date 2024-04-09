@@ -2,6 +2,7 @@
 const router = require("express").Router();
 const rateLimit = require("express-rate-limit");
 const { validationResult } = require("express-validator"); // Import the 'check' function
+const preferencesRoutes = require("./preferencesRoutes");
 
 const humanizeMs = require("humanize-ms");
 
@@ -33,6 +34,8 @@ const {
   serializeUser,
   isUserFoundByEmail,
   sendOTPtoEmail,
+  verifyCodeOTP,
+  sendOTPtoEmailAdmin,
 } = require("../../controllers/auth");
 
 const { notifyUserInApp } = require("../../utils/notifications");
@@ -569,4 +572,7 @@ const limiterOTP = rateLimit({
   },
 });
 router.post("/sendOTP", limiterOTP, sendOTPtoEmail);
+router.post("/sendOTPAdmin", limiterOTP, sendOTPtoEmailAdmin);
+router.post("/verifyCode", verifyCodeOTP);
+router.use("/preferences", preferencesRoutes);
 module.exports = router;

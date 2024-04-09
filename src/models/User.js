@@ -34,6 +34,7 @@ const UserSchema = new Schema(
       type: String,
       default: ROLE.user,
       enum: [ROLE.user, ROLE.admin],
+      required: true,
     },
     validated: {
       type: Boolean,
@@ -52,11 +53,32 @@ const UserSchema = new Schema(
     password: {
       type: String,
       required: true,
+    }, // Preferences
+    preferences: {
+      hideModalForProductYoko: {
+        type: Boolean,
+        default: false,
+      },
+      hideModalForContactInfoYoko: {
+        type: Boolean,
+        default: false,
+      },
+      hideModalForDeliveriesYoko: {
+        type: Boolean,
+        default: false,
+      },
+      hideModalForOrdersYoko: {
+        type: Boolean,
+        default: false,
+      },
+      // Add more preferences here as needed
     },
   },
   { timestamps: true } // Automatically add timestamps for createdAt and updatedAt
 );
+// Function to generate a random password
 
+// Create and export the User model
 // Create and export the User model
 const UserModel = model("User", UserSchema);
 module.exports = UserModel;
