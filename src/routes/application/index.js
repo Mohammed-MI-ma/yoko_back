@@ -8,6 +8,7 @@ const imageController = require("../../Controllers/imageController");
 const upload = require("../../config/multerConfig"); // Import the Multer configuration
 const contactRoutes = require("./contactRoutes");
 const deliveryRoutes = require("./deliveryRoutes");
+const productRoutes = require("./productRoutes");
 
 const ImageModel = require("../../models/Image"); // Assuming you have a MongoDB model for images
 const cacheImagesByKeyword = require("../../middleware/cacheMiddleware");
@@ -18,6 +19,7 @@ router.use("/contact-application", contactRoutes);
 
 // Define the route with the new naming convention
 router.use("/delivery-boy", deliveryRoutes);
+router.use("/product", productRoutes);
 /**
  * @swagger
  * /api/application/createImage:

@@ -10,5 +10,11 @@ router.put(
   checkRole([ROLE.admin]),
   preferencesController.updateVisibilityModalReadMoreDeliveryBoy
 );
+router.put(
+  "/updateVisibilityModalReadMoreProducts",
+  userAuth,
+  checkRole([ROLE.admin]),
+  preferencesController.updateVisibilityModalReadMoreProducts
+);
 
 module.exports = router;
